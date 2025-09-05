@@ -24,7 +24,14 @@ const {
 
 const app = express();
 
-app.use(cors());
+app.use(
+  cors({
+    origin: "*",              // allow any origin
+    methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+  })
+);
+
 app.use(express.json());
 
 // Serve static files from uploads directory
